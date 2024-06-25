@@ -8,20 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var text: String = "Hello!";
-    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .renderingMode(.original)
-                .padding()
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text(text)
-            CustomButton(text: $text)
+        NavigationView {
+            List {
+                NavigationLink(destination: Text("Tela 1")) {
+                    Label("Tela 1", systemImage: "1.circle")
+                }
+                NavigationLink(destination: Text("Tela 2")) {
+                    Label("Tela 2", systemImage: "2.circle")
+                }
+                NavigationLink(destination: Text("Tela 3")) {
+                    Label("Tela 3", systemImage: "3.circle")
+                }
+            }
+            .navigationTitle("iApp")
+            
+            Text("Selecione uma tela")
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .padding()
     }
+}
+
+#Preview {
+    ContentView()
 }
 
 struct CustomButton: View {
