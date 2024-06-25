@@ -18,11 +18,27 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text(text)
-            Button("Mudar") {
-                text = "Mudou!"
-            }
+            CustomButton(text: $text)
         }
         .padding()
+    }
+}
+
+struct CustomButton: View {
+    @Binding var text: String
+    
+    var body: some View {
+        Button(action: {
+            text = "Mudou! Teste"
+        }) {
+            Text("Mudar")
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .shadow(radius: 5)
+        }
     }
 }
 
